@@ -1,0 +1,15 @@
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin tela_1000 {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+@mixin tela_700 {
+  @media (max-width: 700px) {
+    @content;
+  }
+}

@@ -1,0 +1,278 @@
+@use "mixim";
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  overflow: hidden;
+}
+main {
+  position: relative;
+  height: 100vh;
+  padding-inline: 4%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  background-image: url(/img/wall.png);
+  background-size: cover;
+  background-position: center;
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #000 25%, transparent 60%);
+  }
+  .header {
+    position: relative;
+    z-index: 1;
+    padding-top: 1%;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    &-pict {
+      width: 200px;
+      height: 100%;
+      img {
+        object-fit: cover;
+        @include mixim.tela_700 {
+          width: 70%;
+        }
+      }
+    }
+    &-menu {
+      display: flex;
+      transition: all 1s ease-in;
+      @include mixim.tela_1000 {
+        display: block;
+        position: absolute;
+        height: 100vh;
+        width: 40%;
+        top: -5%;
+        left: -40%;
+        z-index: 10;
+        &::after {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: #000000;
+          opacity: 0.3;
+          z-index: -1;
+        }
+      }
+      li {
+        padding-inline: 0.6rem;
+        transition: all 0.5s ease-in;
+        cursor: pointer;
+        transition: all 1s ease-in;
+        @include mixim.tela_1000 {
+          height: 10%;
+          font-size: 1.1rem;
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          padding-top: 1rem;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      li:first-child {
+        @include mixim.tela_1000 {
+          background-color: #000;
+          font-size: 1.3rem;
+        }
+      }
+    }
+    &-search {
+      position: relative;
+      border: 1px solid #fff;
+      padding: 0.5rem 0.3rem;
+      display: flex;
+      align-items: center;
+      width: 250px;
+      margin-right: 5%;
+      overflow: hidden;
+      @include mixim.tela_700 {
+        width: 35%;
+      }
+      i {
+        border-right: 1px solid #fff;
+        padding-right: 0.2rem;
+        width: 15%;
+      }
+      input {
+        position: relative;
+        z-index: 2;
+        background-color: transparent;
+        outline: none;
+        color: #fff;
+        border: none;
+        padding-left: 0.4rem;
+        width: 85%;
+      }
+      input::placeholder {
+        color: #fff;
+      }
+    }
+    .menuIcon {
+      display: none;
+      @include mixim.tela_1000 {
+        display: flex;
+        position: absolute;
+        right: -2%;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+    }
+  }
+  .serie {
+    position: relative;
+    z-index: 1;
+    width: 500px;
+    &-pict {
+      width: 300px;
+      height: 180px;
+      @include mixim.tela_700 {
+        width: 40%;
+        height: 120px;
+      }
+      img {
+        object-fit: cover;
+      }
+    }
+    &-topics {
+      display: flex;
+      align-items: center;
+      margin-block: 0.6rem;
+      li {
+        text-shadow: 1px 1px 1px #000;
+        padding-inline: 0.5rem;
+      }
+      li:not(:last-child) {
+        border-right: 1px solid #fff;
+      }
+      &-age {
+        color: red;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #000;
+        text-decoration: underline;
+      }
+    }
+    &-action {
+      display: flex;
+      margin-top: 1rem;
+      li {
+        text-shadow: 1px 1px 1px #000;
+        display: flex;
+        align-items: center;
+        padding: 0.2rem 0.4rem;
+      }
+      li:not(:last-child) {
+        margin-right: 1rem;
+      }
+      i {
+        font-size: 1.1rem;
+      }
+      &-play {
+        background-color: red;
+        cursor: pointer;
+      }
+      &-my {
+        transition: all 0.5s ease-in;
+        position: relative;
+        cursor: pointer;
+        &:hover::after {
+          width: 100%;
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 100%;
+          left: 0;
+          top: 0;
+          background-color: red;
+          transition: all 0.5s ease-in;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  .watch {
+    width: 200px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2%;
+    cursor: pointer;
+    color: #fff;
+    i {
+      font-size: 2rem;
+      margin-right: 0.3rem;
+    }
+    h6 {
+      transition: all 0.3s ease-in;
+      &:hover {
+        letter-spacing: 0.1rem;
+      }
+    }
+  }
+  .arrowDown {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 2.5rem;
+    z-index: 2;
+    cursor: pointer;
+    animation: click 0.5s infinite linear alternate-reverse;
+  }
+}
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+@keyframes click {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: 2%;
+  }
+}
+//-------- MENU COME OUT
+.appear {
+  left: 0 !important;
+}
+.out {
+  z-index: -1 !important;
+}
